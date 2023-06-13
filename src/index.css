@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+     font-family: 'Josefin Sans', sans-serif;
+     color: white;
+}
+
+#root{
+     width: 90%;
+     padding: 5px;
+}
+
+body{
+     background-image: url(./assets/bg-mobile-light.jpg);
+     background-size: 100% 200px;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-position: start;
+     background-color: white;
+     height: 100svh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+
+
+.main{
+     display: grid;
+     filter: drop-shadow(1px 2px 4px #00000077);
+     grid-template-columns: repeat(6, 1fr);
+     grid-template-rows: repeat(8, 1fr) 3rem 1rem 3rem;
+     grid-template-areas: 
+     "h h h h h h"
+     "h h h h h h"
+     "b b b b b b"
+     "b b b b b b"
+     "b b b b b b"
+     "b b b b b b"
+     "b b b b b b"
+     "b b b b b b"
+     "c c c d d d"
+     ". . . . . ."
+     "s s s s s s"
+     "f f f f f f";
+     height: 82svh;
+}
+
+.header{
+     grid-area: h;
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+}
+
+.taskSort{
+     grid-area: s;
+     display: flex;
+     justify-content: space-evenly;
+     align-items: center;
+     background-color: white;
+}
+
+.desactiveColor{
+     color: hsl(236, 9%, 61%);
+}
+
+.activeColor{
+     color: hsl(220, 98%, 61%);
+}
+
+
+.desactive{
+     display: none;
+}
+
+.active{
+     display: flex;
+}
+
+.tasklist{
+     grid-area: b;
+     border-radius: .3rem .3rem 0 0;
+     width: 100%;
+}
+
+.counterItems{
+     grid-area: c;
+     display: grid;
+     align-items: center;
+     padding-left: 10px;
+     border-radius: 0 0 0 .3rem;
+}
+
+.clearItems{
+     grid-area: d;
+     display: grid;
+     align-items: center;
+     justify-content: end;
+     padding-right: 10px;
+     border-radius: 0 0 .3rem 0;
+}
+
+.activeTask{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+
+.hovered .btn {
+     display: block;
+   }
+
+.hovered .btn .cross {
+     display: inline;
+     cursor: pointer;
+   }
+   
+.btn {
+     display: none;
+}
+   
+.btn .cross {
+     display: none;
+}
+
+
+input:focus{
+  outline: none;
+  caret-color: hsl(220, 98%, 61%);
+}
+input::selection{
+  border-radius: 40px;
+  background-color: hsla(220, 98%, 61%, 0.438);
+}
+   
+
+.borderS {
+     cursor: pointer;
+     border-radius: 50%; 
+     border: solid 1px #ccc;
+     border-radius: 12px;
+     width: 24px;
+     height: 24px;
+}
+
+
+.image{
+     display: none;
+}
+
+.label{
+     width: 24px;
+     height: 24px;
+     cursor: pointer;
+}
+
+
+.imageActive{
+     border-radius: 50%;
+     Background: hsl(280, 87%, 65%);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 24px;
+     height: 24px;
+}
+
+.textCompleted{
+     color: hsl(236, 33%, 92%);
+     position: relative;
+     display: inline-block;
+}
+
+.textCompleted::before{
+     content: "";
+     position: absolute;
+     top: 50%;
+     right: 0;
+     left: 0;
+     border-top: 0.5px solid hsl(236, 9%, 61%);
+     
+}
+
+
+.card{
+     display: grid;
+     grid-template-columns: 2rem 1fr 2rem;
+     grid-template-areas: 
+     "check text cross";
+     align-items: center;
+     justify-items: center;
+     padding: 1rem .5rem 1rem .5rem;
+     transition: all 150ms;
+     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);;
+}
+
+
+.check{
+     grid-area: check;
+}
+.text{
+     grid-area: text;
+     justify-self: start;
+     overflow-wrap: break-word;
+     max-width: 100%;
+     max-height: 100%;
+}
+.ekis{
+     grid-area: cross;
+}
+
+
+@media(min-width:640px){
+     .card{
+          grid-template-columns: 3.5rem 1fr 3.5rem;
+          padding: 1.1rem .5rem 1.1rem .5rem;
+          transition: all 150ms;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);;
+     }
+
+     body{
+          background-image: url(./assets/bg-mobile-light.jpg);
+          background-size: 100% 220px;
+     }
+
+}
+
+@media(min-width:1024px){
+     #root{
+          width: 40%;
+          padding: 2px;
+     }
+
+     body{
+          background-image: url(./assets/bg-desktop-light.jpg);
+          background-size: 100% 220px;
+     }
+
+     .card{
+          grid-template-columns: 4rem 1fr 4rem;
+          padding: 1rem .4rem 1rem .4rem;
+          transition: all 150ms;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);;
+     }
+
+     .borderS {
+          border-radius: 16px;
+          width: 26px;
+          height: 26px;
+     }
+
+
+     .main{
+          grid-template-areas: 
+          "h h h h h h"
+          "h h h h h h"
+          "b b b b b b"
+          "b b b b b b"
+          "b b b b b b"
+          "b b b b b b"
+          "b b b b b b"
+          "b b b b b b"
+          "c c s s d d"
+          ". . . . . ."
+          "f f f f f f"
+          "f f f f f f";
+          height: 82svh;
+     }
+
+     .taskSort{
+          grid-area: s;
+          justify-content: space-around;
+     }
+}
+
+
