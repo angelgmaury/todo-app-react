@@ -4,12 +4,15 @@ import { tasks as data } from "../data/tasks";
 export const TaskContext = createContext();
 
 export function TaskContextProvider(props) {
-  const [tasks, setTasks] = useState(
-    data.map((task, index) => ({ ...task, isChecked: false, id: index }))
-  );
+  const [tasks, setTasks] = useState(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    return storedTasks
+      ? JSON.parse(storedTasks)
+      : data.map((task, index) => ({ ...task, isChecked: false, id: index }));
+  });
 
   useEffect(() => {
-    console.log(tasks);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
   function createTask(task) {

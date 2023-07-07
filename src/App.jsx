@@ -1,12 +1,21 @@
 import { TaskForm } from "./components/TaskForm";
+
 import { CounterItems } from "./components/CounterItems";
+
 import { ClearCompleted } from "./components/ClearCompleted";
+
 import { TaskFilter } from "./components/TaskFilter";
+
 import { Completed } from "./components/Completed";
+
 import { AllTasks } from "./components/AllTasks";
+
 import { ActiveTasks } from "./components/ActiveTasks";
+
 import { useContext, useState } from "react";
+
 import { TaskContext } from "./context/TasksContext";
+
 function App() {
   const { tasks } = useContext(TaskContext);
 
@@ -21,6 +30,7 @@ function App() {
     setAllTasks(false);
     setTaskActive(false);
   };
+
   const handleClickAllTask = () => {
     setAllTasks(true);
     setTaskCompleted(false);

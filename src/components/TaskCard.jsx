@@ -1,12 +1,14 @@
 import { TaskContext } from "../context/TasksContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 export function TaskCard({ title, id }) {
   const iconCross = new URL("../assets/icon-cross.svg", import.meta.url).href;
 
   const iconCheck = new URL("../assets/icon-check.svg", import.meta.url).href;
 
-  const { deleteTask, tasks, toggleTaskCheck } = useContext(TaskContext);
+  const { deleteTask, tasks, toggleTaskCheck, setTasks } =
+    useContext(TaskContext);
+
   const task = tasks.find((task) => task.id === id);
 
   const [isHovered, setIsHovered] = useState(false);
@@ -45,13 +47,13 @@ export function TaskCard({ title, id }) {
         </div>
 
         <div className="relative left-2 text overflow-x-hidden overflow-y-hidden tablet:left-0">
-          <h1
+          <p
             className={`font-light text-sm text-black relative top-0.5 ${
               task.isChecked ? "textCompleted" : null
             } tablet:text-base laptop:text-lg desktop:text-xl`}
           >
             {title}
-          </h1>
+          </p>
         </div>
 
         <div>
